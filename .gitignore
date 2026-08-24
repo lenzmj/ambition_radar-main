@@ -1,0 +1,17 @@
+# 构建产物
+build/
+cmake-build-*/
+
+#  录像
+data/
+*.mp4
+*.avi
+# 模型
+mode/
+# 编辑器 / 杂项
+.vscode/
+.idea/
+*.user
+*.swp
+*~
+.DS_Store

@@ -1,0 +1,30 @@
+# 手眼标定专用配置（可与 config.yaml 并存；内参建议与实机一致）
+#
+# pattern_* = OpenCV 内角点数（不是方格数）
+#   - 若棋盘写「8×11 格 / 方块」：内角点多为 7×10，请改成 cols:10 rows:7
+#   - 若说明书写「内角点 8×11」：保持下面默认
+# square_size_mm：相邻内角点间距 = 方格边长（你们：45 mm）
+
+handeye:
+  pattern_cols: 11
+  pattern_rows: 8
+  square_size_mm: 45.0
+  # 采集保存目录（相对仓库根或绝对路径）
+  output_dir: "/home/lenzmj/ws/data/handeye/handeye_calibrate"
+  # 建议采集组数（程序不强制）
+  recommend_samples: 15
+
+# 复用实机相机 / 串口（与 config/config.yaml 字段对齐）
+hardware:
+  serial_port: "/dev/ttyACM0"
+
+# 小镜头（手眼临时 6mm）内参；图像 3072×2048。主程序长焦仍用 config/config.yaml
+camera:
+  fx: 2525.746065
+  fy: 2525.283501
+  cx: 1501.170224
+  cy: 1107.004481
+  dist_coeffs: [-0.076237, 0.080843, 0.000399, -0.000540, 0.0]
+  exposure_time_us: 8000
+  gain: 21.7
+  camera_sn: "DA4568803"

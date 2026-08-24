@@ -1,0 +1,24 @@
+# =============================================================================
+# ray_to_gimbal：多距离 rpy_cam_to_ray → 改良 ray_to_gimbal
+#
+# 用法（在工程根目录）：
+#   ./build/ray_to_gimbal_calibrate config/ray_to_gimbal.yaml
+#
+# 前提：每组 rpy 是在「激光与十字重合」时，用当时的 ray_to_gimbal 标定得到的。
+# 至少 2 组不同距离；建议 3 组覆盖工作段（如 14–20 m）。
+# =============================================================================
+
+# 标定这些 rpy 时 config 里用的 ray_to_gimbal（米，云台系）
+ray_to_gimbal: [-0.00706, 0.0, 0.1065]
+
+# 与主 config 一致；缺省 [0,0,0] → R=I
+rpy_body_to_gimbal: [0.807070, 0.603259, 3.600369]
+
+# 每组：distance_m + rpy_cam_to_ray [roll, pitch, yaw] 度
+samples:
+  - distance_m: 20.1
+    rpy_cam_to_ray: [0.000000, -0.116415, -0.063397]
+  - distance_m: 16.0
+    rpy_cam_to_ray: [0.000000, -0.140572, -0.065446]
+  - distance_m: 13.9
+    rpy_cam_to_ray: [0.000000, -0.166373, -0.069388]
