@@ -75,25 +75,13 @@ ambition_radar/
          libyaml-cpp-dev
      ```
 
-2. 安装 `.deb` 后若报缺依赖，可一键补齐：
-
-   ```bash
-   sudo apt install -f
-   ```
-
-3. OpenVINO 安装后初始化环境（或写入 `~/.bashrc`）：
-
-   ```bash
-   source /opt/intel/openvino_*/setupvars.sh
-   ```
-
-4. 串口权限（实机）：
+2. 串口权限（实机）：
 
    ```bash
    sudo usermod -aG dialout $USER   # 重新登录后生效
    ```
 
-> 运行时还需自备推理模型（`.engine` / OpenVINO 模型），路径写在 `config/config.yaml`。
+> 运行时还需注意推理模型（`.engine` / OpenVINO 模型），路径写在 `config/config.yaml`。
 
 ### 2.2 编译
 
@@ -144,7 +132,7 @@ make -C build/ -j$(nproc) handeye_capture handeye_calibrate ray_to_gimbal_calibr
 按顺序做，前一步结果写入 `config/config.yaml` 的 `offset`：
 
 |  步骤 |工具| 产出 | 说明 |
-|---|--------|------|------|
+|-----|--------|------|------|
 | 1 手眼  | `handeye_capture` → `handeye_calibrate`| `cam_to_gimbal`、`rpy_body_to_gimbal` | 棋盘固定、云台多姿态；采集按 **s**，建议 ≥15 组 |
 | 2 激光位置 | 图纸/卡尺 | `ray_to_gimbal`| 激光口相对云台旋转中心的平移（米） |
 | 3 光轴  | `app` 按 **W** | `rpy_cam_to_ray`  |激光口相对相机旋转|
